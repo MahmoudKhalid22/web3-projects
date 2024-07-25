@@ -18,5 +18,11 @@ describe("TodoList", function () {
     expect((await todoList.tasks(1)).content).to.equal(
       "complete this DTodo app"
     );
+
+    await todoList.setCompleted(1);
+    expect((await todoList.tasks(1)).completed).to.equal(true);
+
+    await todoList.deleteTask(1);
+    expect((await todoList.tasks(1)).content).to.equal("");
   });
 });

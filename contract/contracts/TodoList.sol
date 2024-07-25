@@ -19,4 +19,16 @@ contract TodoList {
         tasks[taskCount] = Task(taskCount, _content, false);
     }
 
+    function setCompleted(uint _id) public {
+        require(tasks[_id].id == _id, "Task is not found");
+        tasks[_id].completed = true;
+    }
+
+    function deleteTask(uint _id) public {
+        require(tasks[_id].id == _id, "task is not found");
+        taskCount--;
+        delete tasks[_id];
+    }
+
+
 }
